@@ -149,8 +149,7 @@ export default function WelcomeScreen() {
           <rect width="100%" height="100%" fill="url(#dotPattern)" />
         </svg>
       </div>
-      
-      {/* Flowing wave animations */}
+    
       <div className="absolute bottom-0 left-0 right-0 h-64 overflow-hidden">
         <svg className="absolute w-full h-auto wave-slow" style={{ bottom: '-10px' }} viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path 
