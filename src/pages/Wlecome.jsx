@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { mainContext } from '../context/MainContext';
 
 
 export default function WelcomeScreen() {
@@ -26,6 +28,8 @@ export default function WelcomeScreen() {
     name: '',
     rememberMe: false
   });
+  const { setUser, setToken } = useContext(mainContext);
+  const navigate = useNavigate()
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
@@ -83,7 +87,7 @@ export default function WelcomeScreen() {
     try {
       const endpoint = isSignIn
         ? 'http://localhost:5000/api/auth/login'
-        : 'http://localhost:5000/api/register';
+        : 'http://localhost:5000/api/auth/register';
   
       const dataToSend = {
         email: formData.email,
@@ -99,10 +103,23 @@ export default function WelcomeScreen() {
         type: 'success'
       });
       setIsLoading(false);
-  
+
+        if (response.data?.token) {
+             setToken(response.data.token);
+             setUser(response.data.user);
+             
+             localStorage.setItem('token', response.data.token);
+            //  localStorage.setItem('user', JSON.stringify(response.data || {}));
+     
+           
+             navigate('/'); // Ensure you have `useNavigate`
+           } else {console.log('Login failed:', response.data.message);}
+           
+
       // You may also want to store token or redirect user here
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      
+      navigate('/projects/create');
   
     } catch (error) {
       console.error('Authentication error:', error);

@@ -7,12 +7,14 @@ import EditTranscript from './pages/EditTranscript';
 
 
 
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
         <Route path="/projects/create" element={<CreateProjectLanding />} />
+        {/* <Route path="/projects/creation" element={<Projectcreation />} /> */}
         <Route path="/projects" element={<ProjectList />} />
         <Route path="/projects/:projectId/upload" element={<UploadPodcast />} />
         <Route path="/projects/:projectId/podcasts/:podcastId/edit" element={<EditTranscript/>} />
