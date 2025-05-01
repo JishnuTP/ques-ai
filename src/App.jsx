@@ -4,6 +4,7 @@ import CreateProjectLanding from './pages/Createproject';
 import ProjectList from './pages/ProjectList';
 import UploadPodcast from './pages/UploadProdcast';
 import EditTranscript from './pages/EditTranscript';
+import ProfilePage from './pages/Profile';
 
 
 
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/projects/create" element={<CreateProjectLanding />} />
         {/* <Route path="/projects/creation" element={<Projectcreation />} /> */}
         <Route path="/projects" element={<ProjectList />} />

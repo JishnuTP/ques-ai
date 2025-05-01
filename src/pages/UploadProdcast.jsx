@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios'; // Import axios
 import UploadHeader from '../components/UploadHeader';
 import UploadSidebar from '../components/uploadSidebar';
+import { useParams } from 'react-router-dom';
 
 function UploadPodcast() {
   const [showModal, setShowModal] = useState(false);
@@ -14,6 +15,9 @@ function UploadPodcast() {
     { name: 'RSS Feed Podcast', url: 'https://rss.example.com/podcast.xml', type: 'rss' },
     { name: 'My Podcast MP3', url: '/uploads/episode1.mp3', type: 'upload' },
   ]); 
+  const {projectId} = useParams();
+ 
+  
 
   // Handle Card Click for Different Upload Types
   const handleCardClick = (type) => {
