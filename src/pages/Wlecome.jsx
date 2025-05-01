@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { mainContext } from '../context/MainContext';
+import { API_BASE_URL } from '../api/Api';
 
 
 export default function WelcomeScreen() {
@@ -86,8 +87,8 @@ export default function WelcomeScreen() {
   
     try {
       const endpoint = isSignIn
-        ? 'http://localhost:5000/api/auth/login'
-        : 'http://localhost:5000/api/auth/register';
+        ? `${API_BASE_URL}api/auth/login`
+        : `${API_BASE_URL}api/auth/register`;
   
       const dataToSend = {
         email: formData.email,

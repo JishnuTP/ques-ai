@@ -28,7 +28,8 @@ function CreateProjectLanding() {
   
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/projects',
+        `${API_BASE_URL}api/projects`,
+       
         { name: projectName, description: "project description" },
         {
           headers: {
