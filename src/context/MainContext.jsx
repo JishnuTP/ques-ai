@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
+import { API_BASE_URL } from '../api/Api';
 
 
 
@@ -14,7 +15,7 @@ export const MainProvider = ({ children }) => {
   const fetchUserDetails = async () => {
     if (!token) return; // Don't fetch if there is no token
     try {
-        const response = await axios.get("http://localhost:5000/api/auth/profile", {
+        const response = await axios.get(`${API_BASE_URL}api/auth/profile`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           
