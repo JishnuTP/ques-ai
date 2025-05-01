@@ -97,7 +97,9 @@ export default function WelcomeScreen() {
       };
   
       const response = await axios.post(endpoint, dataToSend);
-  
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data || {}));
+
       // Handle response
       setMessage({
         text: isSignIn ? 'Login successful!' : 'Account created successfully!',
